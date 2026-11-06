@@ -4,29 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#b51f2a">
-  <meta name="description" content="Drive-In and Diaries — A personal journal about pop culture, storytelling, creativity, and the stories that shape us.">
-  <title>Drive-In and Diaries | Stories Don't End When the Credits Roll</title>
+  <meta name="theme-color" content="#a51f2b">
+  <title>Drive-In and Diaries</title>
+  <meta name="description" content="Stories don't end when the credits roll. A personal journal about movies, television, comics, video games, music, and storytelling.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Rye&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --red: #b51f2a;
-      --dark-red: #861720;
-      --cream: #fffaf1;
-      --white: #ffffff;
-      --ink: #252020;
-      --muted: #776c67;
-      --pink: #f8e4df;
-      --line: #e9c9c3;
-      --shadow: 5px 5px 0 var(--ink);
-      --display: "Rye", Georgia, serif;
-      --typewriter: "Special Elite", Georgia, serif;
-      --body: "DM Sans", Arial, sans-serif;
-      --mono: "DM Mono", monospace;
+      --red: #a51f2b;
+      --dark-red: #76151e;
+      --cream: #fff8e9;
+      --paper: #f5e9d2;
+      --white: #fffdf8;
+      --ink: #282321;
+      --muted: #746b62;
+      --gold: #e5b85c;
+      --border: #dfcdb0;
     }
 
     * {
@@ -42,372 +38,289 @@
     body {
       background: var(--cream);
       color: var(--ink);
-      font-family: var(--body);
-      line-height: 1.6;
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
+    button,
+    input {
       font: inherit;
     }
 
-    .announcement {
+    button {
+      cursor: pointer;
+    }
+
+    .top-strip {
+      height: 12px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red) 0 30px,
+        var(--white) 30px 60px
+      );
+    }
+
+    header {
       background: var(--red);
-      color: white;
+      color: var(--white);
       text-align: center;
-      padding: 9px 16px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .site-header {
-      background: var(--white);
-      border-bottom: 3px solid var(--ink);
+      padding: 48px 20px 42px;
+      border-bottom: 8px solid var(--gold);
       position: relative;
-      z-index: 5;
+      overflow: hidden;
     }
 
-    .header-inner {
-      max-width: 1250px;
-      margin: auto;
-      padding: 24px 30px 18px;
+    header::before,
+    header::after {
+      content: "★";
+      position: absolute;
+      top: 40px;
+      color: var(--gold);
+      font-size: 42px;
+      opacity: 0.8;
     }
 
-    .brand {
-      text-align: center;
+    header::before {
+      left: 8%;
     }
 
-    .brand-kicker {
-      color: var(--red);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-weight: 500;
+    header::after {
+      right: 8%;
     }
 
-    .brand h1 {
-      font-family: var(--display);
-      font-size: clamp(35px, 7vw, 76px);
-      color: var(--red);
-      line-height: 1.12;
-      letter-spacing: -2px;
-      text-shadow: 2px 2px 0 #f3c6bd;
-      margin: 3px 0;
+    .site-title {
+      font-family: "Rye", serif;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 1.15;
+      letter-spacing: 2px;
+      text-shadow: 3px 4px 0 var(--dark-red);
     }
 
-    .brand-tagline {
-      font-family: var(--typewriter);
-      font-size: 13px;
-      color: var(--ink);
-      letter-spacing: 1px;
+    .tagline {
+      margin-top: 16px;
+      font-family: "Special Elite", cursive;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: #ffe9b8;
     }
 
-    .nav-wrap {
-      border-top: 1px solid var(--line);
-      margin-top: 20px;
-      padding-top: 13px;
+    .header-label {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 7px 18px;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: "Special Elite", cursive;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      transform: rotate(-2deg);
     }
 
-    .main-nav {
+    nav {
+      background: var(--dark-red);
+      padding: 14px 20px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 34px;
       flex-wrap: wrap;
+      gap: 28px;
     }
 
-    .main-nav a {
-      font-family: var(--mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 500;
-      transition: color .2s;
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: "Special Elite", cursive;
+      font-size: 0.95rem;
+      transition: color 0.2s;
     }
 
-    .main-nav a:hover {
-      color: var(--red);
+    nav a:hover {
+      color: var(--gold);
     }
 
     .hero {
-      max-width: 1250px;
-      margin: 34px auto 55px;
-      padding: 0 30px;
+      max-width: 1100px;
+      margin: 45px auto;
+      padding: 0 24px;
     }
 
     .marquee {
       background: var(--red);
-      color: white;
-      border: 4px solid var(--ink);
-      box-shadow: 8px 8px 0 var(--ink);
-      padding: 32px 28px;
+      color: var(--white);
+      padding: 35px 25px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .marquee::before,
-    .marquee::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 7px;
-      background: repeating-linear-gradient(
-        90deg,
-        #fff 0 9px,
-        transparent 9px 19px
-      );
-      opacity: .9;
-    }
-
-    .marquee::before { top: 8px; }
-    .marquee::after { bottom: 8px; }
-
-    .marquee-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 13px;
-      color: #ffe6df;
+      border: 7px solid var(--gold);
+      outline: 3px solid var(--red);
+      box-shadow: 0 8px 18px #0002;
     }
 
     .marquee h2 {
-      font-family: var(--display);
-      font-size: clamp(29px, 5vw, 55px);
-      line-height: 1.2;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      text-shadow: 3px 3px 0 var(--dark-red);
+      font-family: "Rye", serif;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      line-height: 1.3;
     }
 
     .marquee p {
-      max-width: 650px;
-      margin: auto;
-      font-size: 14px;
-      color: #fff0ec;
+      font-family: "Special Elite", cursive;
+      color: #ffe9b8;
+      margin-top: 12px;
     }
 
-    .marquee-bottom {
-      margin-top: 20px;
-      display: inline-block;
-      border: 1px solid white;
-      padding: 8px 18px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .marquee-stars {
+      color: var(--gold);
+      letter-spacing: 10px;
+      margin-top: 18px;
+      font-size: 1.2rem;
     }
 
     .section {
-      max-width: 1250px;
-      margin: 0 auto 65px;
-      padding: 0 30px;
+      max-width: 1100px;
+      margin: 55px auto;
+      padding: 0 24px;
     }
 
     .section-heading {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
+      text-align: center;
+      margin-bottom: 30px;
     }
 
     .section-heading h2 {
-      font-family: var(--display);
+      font-family: "Rye", serif;
       color: var(--red);
-      font-size: 25px;
-      white-space: nowrap;
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
     }
 
-    .section-heading span {
-      height: 2px;
-      background: var(--red);
-      flex: 1;
+    .section-heading p {
+      font-family: "Special Elite", cursive;
+      color: var(--muted);
+      margin-top: 8px;
     }
 
-    .featured {
+    .featured-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      box-shadow: 0 7px 20px #0000000d;
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      border: 2px solid var(--ink);
-      background: white;
-      box-shadow: var(--shadow);
+      grid-template-columns: 1fr 1.4fr;
       overflow: hidden;
     }
 
     .featured-art {
-      min-height: 350px;
+      min-height: 300px;
       background:
-        radial-gradient(circle at 50% 40%, transparent 0 20%, rgba(0,0,0,.1) 21% 22%, transparent 23%),
-        repeating-linear-gradient(135deg, #c32b35 0 18px, #a91d29 18px 36px);
+        radial-gradient(circle at center, #c13b43 0 8%, transparent 9%),
+        repeating-conic-gradient(#fff8e9 0% 25%, #a51f2b 0% 50%) 50% / 48px 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 35px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .featured-art::before {
-      content: "★";
-      position: absolute;
-      color: rgba(255,255,255,.13);
-      font-size: 230px;
-      transform: rotate(-15deg);
-    }
-
-    .featured-art-card {
-      background: var(--cream);
-      border: 3px solid var(--ink);
       padding: 25px;
-      width: 78%;
+    }
+
+    .featured-art-inner {
+      background: var(--red);
+      border: 5px double var(--gold);
+      color: var(--white);
       text-align: center;
-      transform: rotate(-3deg);
-      box-shadow: 7px 7px 0 rgba(0,0,0,.25);
-      position: relative;
-      z-index: 1;
+      padding: 28px 20px;
+      width: 100%;
+      transform: rotate(-2deg);
+      box-shadow: 0 5px 15px #0003;
     }
 
-    .featured-art-card small {
+    .featured-art-inner strong {
       display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 3px;
-      color: var(--red);
-      margin-bottom: 10px;
+      font-family: "Rye", serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: 1.25;
     }
 
-    .featured-art-card strong {
+    .featured-art-inner span {
       display: block;
-      font-family: var(--display);
-      color: var(--red);
-      font-size: clamp(25px, 4vw, 43px);
-      line-height: 1.2;
-    }
-
-    .featured-art-card em {
-      display: block;
-      font-family: var(--typewriter);
       margin-top: 12px;
-      font-size: 12px;
+      font-family: "Special Elite", cursive;
+      color: var(--gold);
     }
 
-    .featured-copy {
-      padding: 42px;
+    .featured-content {
+      padding: 35px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 10px;
+    .category-label {
       color: var(--red);
-      letter-spacing: 2px;
+      font-family: "Special Elite", cursive;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      letter-spacing: 1px;
     }
 
-    .featured-copy h3 {
-      font-family: var(--display);
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.25;
+    .featured-content h3 {
+      font-family: "Rye", serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.3;
+      margin: 12px 0;
+    }
+
+    .post-meta {
+      color: var(--muted);
+      font-size: 0.85rem;
       margin-bottom: 15px;
     }
 
-    .featured-copy p {
-      font-size: 14px;
-      color: var(--muted);
+    .featured-content p {
+      color: #514943;
       margin-bottom: 22px;
     }
 
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--red);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: 0;
-      background: none;
+    .read-button {
+      display: inline-block;
       width: fit-content;
+      border: none;
+      background: var(--red);
+      color: var(--white);
+      padding: 12px 23px;
+      font-family: "Special Elite", cursive;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    .text-link:hover {
-      color: var(--dark-red);
-      text-decoration: underline;
+    .read-button:hover {
+      background: var(--dark-red);
+      transform: translateY(-2px);
     }
 
-    .ticket-divider {
-      max-width: 1250px;
-      margin: 0 auto 55px;
-      padding: 0 30px;
-    }
-
-    .ticket-divider-inner {
-      border-top: 2px dashed var(--red);
-      border-bottom: 2px dashed var(--red);
-      padding: 10px;
-      text-align: center;
-      color: var(--red);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .toolbar {
+    .filter-area {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
       margin-bottom: 25px;
     }
 
-    .filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
+    .filter-button {
       border: 1px solid var(--red);
+      background: transparent;
       color: var(--red);
-      background: white;
-      padding: 8px 13px;
-      font-family: var(--mono);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      cursor: pointer;
-      transition: .2s;
+      padding: 9px 15px;
+      font-family: "Special Elite", cursive;
+      transition: all 0.2s;
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
+    .filter-button:hover,
+    .filter-button.active {
       background: var(--red);
-      color: white;
+      color: var(--white);
     }
 
     .search-box {
-      border: 1px solid var(--line);
-      background: white;
-      padding: 9px 12px;
-      min-width: 220px;
-      font-family: var(--body);
-      font-size: 12px;
+      display: block;
+      max-width: 420px;
+      width: 100%;
+      margin: 0 auto 30px;
+      padding: 13px 16px;
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--ink);
       outline: none;
     }
 
@@ -417,420 +330,247 @@
 
     .posts-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 23px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
     }
 
     .post-card {
-      background: white;
-      border: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .post-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 4px 5px 0 var(--red);
-    }
-
-    .post-art {
-      min-height: 170px;
-      background: var(--red);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--border);
       padding: 25px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .post-art::before {
-      content: "✦";
-      position: absolute;
-      font-size: 130px;
-      opacity: .12;
-      transform: rotate(15deg);
-    }
-
-    .post-art span {
-      font-family: var(--display);
-      font-size: 25px;
-      line-height: 1.2;
-      position: relative;
-      z-index: 1;
-      max-width: 260px;
-    }
-
-    .post-art.art-pink {
-      background: #e9b5ad;
-      color: var(--dark-red);
-    }
-
-    .post-art.art-dark {
-      background: #33272a;
-      color: #fff3e9;
-    }
-
-    .post-art.art-cream {
-      background: #f1dfc8;
-      color: var(--red);
-    }
-
-    .post-info {
-      padding: 20px;
+      box-shadow: 0 4px 12px #00000008;
       display: flex;
       flex-direction: column;
-      flex: 1;
+      align-items: flex-start;
     }
 
-    .post-meta {
-      font-family: var(--mono);
-      font-size: 9px;
-      color: var(--red);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    .post-card h3 {
+      font-family: "Rye", serif;
+      font-size: 1.35rem;
+      line-height: 1.35;
+      margin: 10px 0;
     }
 
-    .post-info h3 {
-      font-family: var(--display);
-      font-size: 20px;
-      line-height: 1.3;
-      margin-bottom: 10px;
-    }
-
-    .post-info p {
-      color: var(--muted);
-      font-size: 12px;
+    .post-card p {
+      color: #514943;
       margin-bottom: 18px;
+      flex-grow: 1;
     }
 
-    .post-info .text-link {
+    .post-card .read-button {
       margin-top: auto;
     }
 
-    .empty-state {
-      display: none;
+    .empty-message {
       text-align: center;
-      padding: 45px 20px;
-      border: 1px dashed var(--red);
       color: var(--muted);
-      font-family: var(--typewriter);
+      grid-column: 1 / -1;
+      padding: 30px;
+      font-family: "Special Elite", cursive;
     }
 
-    .about-panel {
-      background: var(--red);
-      color: white;
-      padding: 45px;
-      border: 3px solid var(--ink);
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 35px;
-      align-items: center;
-    }
-
-    .about-stamp {
-      border: 3px solid white;
-      padding: 25px;
+    .about-box {
+      background: var(--paper);
+      border: 2px dashed var(--red);
+      padding: 35px;
       text-align: center;
-      transform: rotate(-4deg);
-      max-width: 270px;
-      margin: auto;
     }
 
-    .about-stamp small {
-      font-family: var(--mono);
-      letter-spacing: 3px;
-      font-size: 10px;
-    }
-
-    .about-stamp strong {
-      display: block;
-      font-family: var(--display);
-      font-size: 34px;
-      line-height: 1.15;
-      margin: 10px 0;
-    }
-
-    .about-copy .eyebrow {
-      color: #ffd9d1;
-    }
-
-    .about-copy h2 {
-      font-family: var(--display);
-      font-size: 30px;
+    .about-box h2 {
+      font-family: "Rye", serif;
+      color: var(--red);
       margin-bottom: 15px;
     }
 
-    .about-copy p {
-      color: #ffeae5;
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-
-    .about-copy a {
-      display: inline-block;
-      border: 1px solid white;
-      padding: 9px 15px;
-      margin-top: 10px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: .2s;
-    }
-
-    .about-copy a:hover {
-      background: white;
-      color: var(--red);
-    }
-
-    .closing-note {
-      text-align: center;
-      max-width: 700px;
-      margin: 70px auto;
-      padding: 0 25px;
-    }
-
-    .closing-note .star {
-      color: var(--red);
-      font-size: 25px;
-    }
-
-    .closing-note h2 {
-      font-family: var(--display);
-      font-size: 27px;
-      color: var(--red);
-      margin: 10px 0;
-    }
-
-    .closing-note p {
-      font-family: var(--typewriter);
-      font-size: 13px;
-      color: var(--muted);
+    .about-box p {
+      max-width: 750px;
+      margin: 0 auto 12px;
     }
 
     footer {
-      background: var(--ink);
-      color: white;
-      padding: 35px 25px;
+      margin-top: 70px;
+      padding: 35px 20px;
+      background: var(--dark-red);
+      color: var(--white);
       text-align: center;
+      border-top: 8px solid var(--gold);
+      font-family: "Special Elite", cursive;
     }
 
-    footer strong {
-      display: block;
-      color: #ffaaa4;
-      font-family: var(--display);
-      font-size: 23px;
-      margin-bottom: 8px;
-    }
-
-    footer p {
-      color: #c9bdb8;
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 1px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin: 17px 0;
-    }
-
-    .footer-links a {
-      color: white;
-      font-family: var(--mono);
-      font-size: 10px;
-      text-transform: uppercase;
-    }
-
-    .footer-links a:hover {
-      color: #ffaaa4;
+    footer p + p {
+      margin-top: 8px;
+      color: #f3d9c0;
+      font-size: 0.85rem;
     }
 
     /* Article reader */
 
-    .reader-overlay {
+    .modal {
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 20;
-      background: rgba(25, 15, 15, .82);
-      padding: 25px;
+      z-index: 1000;
+      background: #160d0dcc;
+      padding: 25px 14px;
       overflow-y: auto;
     }
 
-    .reader-overlay.open {
+    .modal.open {
       display: block;
     }
 
-    .reader {
+    .article-window {
       background: var(--cream);
-      max-width: 780px;
-      margin: 30px auto;
-      border: 3px solid var(--ink);
-      box-shadow: 9px 9px 0 var(--red);
+      max-width: 850px;
+      width: 100%;
+      margin: 25px auto;
+      border: 5px solid var(--gold);
+      box-shadow: 0 15px 50px #0006;
       position: relative;
     }
 
-    .reader-top {
+    .article-top {
       background: var(--red);
-      color: white;
-      padding: 14px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      color: var(--white);
+      padding: 25px 65px 25px 30px;
+      border-bottom: 5px solid var(--gold);
     }
 
-    .close-reader {
-      color: white;
-      border: 1px solid white;
+    .article-top h2 {
+      font-family: "Rye", serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.3;
+    }
+
+    .article-top p {
+      font-family: "Special Elite", cursive;
+      color: #ffe9b8;
+      margin-top: 10px;
+    }
+
+    .close-button {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      border: 2px solid var(--gold);
       background: transparent;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      font-size: 18px;
+      color: white;
+      width: 36px;
+      height: 36px;
+      font-size: 1.4rem;
+      line-height: 1;
     }
 
-    .reader-content {
-      padding: clamp(25px, 6vw, 55px);
+    .close-button:hover {
+      background: var(--dark-red);
     }
 
-    .reader-content h2 {
-      font-family: var(--display);
-      font-size: clamp(27px, 5vw, 43px);
-      line-height: 1.2;
-      margin: 8px 0 18px;
+    .article-body {
+      padding: 35px clamp(20px, 6vw, 55px) 50px;
+      font-size: 1.02rem;
+      line-height: 1.9;
     }
 
-    .reader-meta {
-      font-family: var(--mono);
-      font-size: 10px;
+    .article-body h3 {
+      font-family: "Rye", serif;
       color: var(--red);
-      margin-bottom: 28px;
+      font-size: 1.5rem;
+      line-height: 1.35;
+      margin: 40px 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
     }
 
-    .reader-body {
-      font-family: var(--typewriter);
-      font-size: 15px;
-      line-height: 2;
-      color: #39302c;
-    }
-
-    .reader-body p {
+    .article-body p {
       margin-bottom: 20px;
     }
 
-    .reader-body h3 {
-      font-family: var(--display);
-      color: var(--red);
-      font-size: 22px;
-      margin: 28px 0 12px;
+    .article-body strong {
+      color: var(--dark-red);
     }
 
-    .reader-body a {
-      color: var(--red);
-      text-decoration: underline;
+    .article-body em {
+      color: #675044;
     }
 
-    .reader-end {
-      border-top: 1px dashed var(--red);
-      margin-top: 35px;
-      padding-top: 18px;
-      color: var(--red);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 2px;
+    .article-body blockquote {
+      margin: 25px 0 30px;
+      padding: 22px 25px;
+      background: var(--paper);
+      border-left: 5px solid var(--red);
+      box-shadow: 0 3px 10px #00000008;
+    }
+
+    .article-body blockquote p {
+      margin-bottom: 17px;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body blockquote em {
+      display: block;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .article-bottom {
+      background: var(--paper);
+      border-top: 1px solid var(--border);
+      padding: 20px;
       text-align: center;
     }
 
-    @media (max-width: 850px) {
-      .featured {
+    .article-bottom button {
+      border: none;
+      background: var(--red);
+      color: white;
+      padding: 11px 22px;
+      font-family: "Special Elite", cursive;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 38px 18px;
+      }
+
+      header::before {
+        left: 3%;
+        font-size: 25px;
+      }
+
+      header::after {
+        right: 3%;
+        font-size: 25px;
+      }
+
+      .featured-card {
         grid-template-columns: 1fr;
       }
 
       .featured-art {
-        min-height: 270px;
+        min-height: 220px;
+      }
+
+      .featured-content {
+        padding: 25px;
       }
 
       .posts-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .about-panel {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 560px) {
-      .header-inner {
-        padding: 22px 16px 15px;
-      }
-
-      .main-nav {
+      nav {
         gap: 15px;
       }
 
-      .main-nav a {
-        font-size: 9px;
+      .article-body {
+        padding: 25px 20px 35px;
       }
 
-      .hero,
-      .section,
-      .ticket-divider {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .marquee {
-        padding: 35px 17px;
-      }
-
-      .featured-copy {
-        padding: 27px;
-      }
-
-      .posts-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .post-art {
-        min-height: 190px;
-      }
-
-      .toolbar {
-        align-items: stretch;
-      }
-
-      .search-box {
-        width: 100%;
-      }
-
-      .about-panel {
-        padding: 28px 20px;
-      }
-
-      .section-heading h2 {
-        font-size: 19px;
-      }
-
-      .reader-overlay {
-        padding: 10px;
-      }
-
-      .reader {
-        margin: 12px auto;
+      .article-body blockquote {
+        padding: 17px;
       }
     }
   </style>
@@ -838,589 +578,467 @@
 
 <body>
 
-  <div class="announcement">
-    ★ Now showing: Pop culture, personal stories & everything in between ★
-  </div>
+  <div class="top-strip"></div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="brand">
-        <div class="brand-kicker">A personal journal of pop culture & creativity</div>
-        <h1>Drive-In and Diaries</h1>
-        <p class="brand-tagline">Stories don't end when the credits roll.</p>
-      </div>
-
-      <div class="nav-wrap">
-        <nav class="main-nav">
-          <a href="#home">Home</a>
-          <a href="#articles">The Journal</a>
-          <a href="#about">About</a>
-          <a href="#contact">The Exit</a>
-        </nav>
-      </div>
-    </div>
+  <header id="home">
+    <h1 class="site-title">Drive-In and Diaries</h1>
+    <p class="tagline">Stories don't end when the credits roll.</p>
+    <div class="header-label">A PERSONAL POP CULTURE JOURNAL</div>
   </header>
 
-  <main id="home">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#featured">Featured</a>
+    <a href="#stories">The Stories We Love</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <main>
 
     <section class="hero">
       <div class="marquee">
-        <div class="marquee-label">Welcome to the Drive-In</div>
-        <h2>Pull Up a Chair.<br>Stay for the Story.</h2>
-        <p>
-          A place to talk about the movies, shows, comics, games, music,
-          and experiences that make us think, feel, create, and see the
-          world a little differently.
-        </p>
-        <a href="#articles" class="marquee-bottom">Enter the Journal</a>
+        <h2>WELCOME TO THE DRIVE-IN</h2>
+        <p>Pull up a chair. The show is just getting started.</p>
+        <div class="marquee-stars">★ ★ ★ ★ ★</div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="featured">
       <div class="section-heading">
         <h2>Now Showing</h2>
-        <span></span>
+        <p>Featured from the diary</p>
       </div>
 
-      <div class="featured">
+      <div class="featured-card">
         <div class="featured-art">
-          <div class="featured-art-card">
-            <small>THE FEATURE PRESENTATION</small>
-            <strong>Stories Beyond the Screen</strong>
-            <em>Every story leaves something behind.</em>
+          <div class="featured-art-inner">
+            <strong>Stories We Carry With Us</strong>
+            <span>NOW SHOWING</span>
           </div>
         </div>
 
-        <div class="featured-copy">
-          <div class="eyebrow">Featured Entry · Welcome</div>
-          <h3>Welcome to Drive-In and Diaries</h3>
+        <div class="featured-content">
+          <span class="category-label">The Stories We Love</span>
+          <h3>Stories We Carry With Us</h3>
+          <div class="post-meta">November 2026 · Comics, Television & Storytelling</div>
           <p>
-            This is more than a place to review the latest movie or talk
-            about a favorite comic. It's a journal about the relationship
-            between the stories we experience and the stories we create.
-            Here's where those thoughts get a place of their own.
+            The stories we read, watch, and create have a way of staying with us.
+            Sometimes they inspire something new; sometimes they remind us why
+            we love storytelling in the first place.
           </p>
-          <button class="text-link" onclick="openPost('welcome')">
-            Read the introduction →
+          <button class="read-button" onclick="openArticle('stories-we-carry-with-us')">
+            Read the Article →
           </button>
         </div>
       </div>
     </section>
 
-    <div class="ticket-divider">
-      <div class="ticket-divider-inner">
-        One ticket · Countless stories · No intermission
-      </div>
-    </div>
-
-    <section class="section" id="articles">
+    <section class="section" id="stories">
       <div class="section-heading">
         <h2>The Journal</h2>
-        <span></span>
+        <p>Every story has a place here.</p>
       </div>
 
-      <div class="toolbar">
-        <div class="filters">
-          <button class="filter-btn active" data-category="All">All Entries</button>
-          <button class="filter-btn" data-category="Pop Culture">Pop Culture</button>
-          <button class="filter-btn" data-category="Storytelling">Storytelling</button>
-          <button class="filter-btn" data-category="Behind the Scenes">Behind the Scenes</button>
-        </div>
+      <input
+        class="search-box"
+        id="searchInput"
+        type="search"
+        placeholder="Search the journal..."
+        aria-label="Search articles"
+      >
 
-        <input
-          class="search-box"
-          type="search"
-          id="search"
-          placeholder="Find something in the journal..."
-          aria-label="Search articles"
-        >
+      <div class="filter-area" id="filters">
+        <button class="filter-button active" data-category="All">All Stories</button>
+        <button class="filter-button" data-category="The Stories We Love">The Stories We Love</button>
+        <button class="filter-button" data-category="Storytelling">Storytelling</button>
+        <button class="filter-button" data-category="Behind the Scenes">Behind the Scenes</button>
       </div>
 
       <div class="posts-grid" id="postsGrid"></div>
-
-      <div class="empty-state" id="emptyState">
-        Nothing playing here just yet. Try another search!
-      </div>
     </section>
 
     <section class="section" id="about">
-      <div class="about-panel">
-        <div class="about-stamp">
-          <small>ESTABLISHED FOR</small>
-          <strong>THE LOVE<br>OF STORIES</strong>
-          <small>FILM · COMICS · GAMES · LIFE</small>
-        </div>
+      <div class="about-box">
+        <h2>About the Journal</h2>
 
-        <div class="about-copy">
-          <div class="eyebrow">A little about the writer</div>
-          <h2>Behind the Diaries</h2>
-          <p>
-            I'm a storyteller and pop-culture enthusiast who has always
-            found something fascinating in the worlds people create.
-            Movies, television, comics, video games, music, and the people
-            behind them have all shaped the way I look at storytelling.
-          </p>
-          <p>
-            I'm also the creator behind Singerverse, a multimedia
-            storytelling universe. The ideas, characters, and experiences
-            that come from creating it are part of a much bigger creative
-            journey.
-          </p>
-          <p>
-            This journal is where I can explore those connections:
-            what works, what doesn't, what inspires me, and what I take
-            away from the stories I experience. Sometimes it'll be
-            criticism. Sometimes it'll be appreciation. Sometimes it'll
-            just be me thinking out loud.
-          </p>
-          <p>
-            The goal isn't to have the final word on pop culture.
-            It's to have a conversation with it.
-          </p>
-          <a href="#articles">Explore the journal</a>
-        </div>
+        <p>
+          Welcome to Drive-In and Diaries, a personal journal dedicated to
+          the stories that entertain us, inspire us, and stay with us.
+        </p>
+
+        <p>
+          From movies and television to comics, video games, and music,
+          this is a place to share thoughts, experiences, discoveries,
+          and the creative ideas that come from enjoying the things we love.
+        </p>
+
+        <p>
+          This isn't just about reviewing something and moving on.
+          It's about looking at the stories themselves, the people behind them,
+          and the ways they influence our own creativity.
+        </p>
+
+        <p>
+          Sometimes that means discussing a favorite character.
+          Sometimes it means sharing an original story.
+          And sometimes it simply means writing down a thought worth remembering.
+        </p>
       </div>
-    </section>
-
-    <section class="closing-note" id="contact">
-      <div class="star">★ ★ ★</div>
-      <h2>Thanks for Stopping By</h2>
-      <p>
-        The movie might be over, but there's always another story
-        waiting to begin. See you at the next showing.
-      </p>
     </section>
 
   </main>
 
   <footer>
-    <strong>Drive-In and Diaries</strong>
-    <p>STORIES DON'T END WHEN THE CREDITS ROLL.</p>
-
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#articles">Journal</a>
-      <a href="#about">About</a>
-    </div>
-
-    <p>© <span id="year"></span> Drive-In and Diaries. All rights reserved.</p>
+    <p>Drive-In and Diaries</p>
+    <p>Stories don't end when the credits roll.</p>
+    <p>© 2026 Drive-In and Diaries</p>
   </footer>
 
   <!-- Article Reader -->
-  <div class="reader-overlay" id="readerOverlay" onclick="overlayClick(event)">
-    <article class="reader">
-      <div class="reader-top">
-        <span>Drive-In and Diaries · Journal Entry</span>
-        <button class="close-reader" onclick="closePost()" aria-label="Close article">×</button>
+
+  <div class="modal" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="article-window">
+
+      <div class="article-top">
+        <button class="close-button" onclick="closeArticle()" aria-label="Close article">×</button>
+        <h2 id="modalTitle"></h2>
+        <p id="modalMeta"></p>
       </div>
 
-      <div class="reader-content">
-        <div class="eyebrow" id="readerCategory"></div>
-        <h2 id="readerTitle"></h2>
-        <div class="reader-meta" id="readerMeta"></div>
-        <div class="reader-body" id="readerBody"></div>
-        <div class="reader-end">★ END OF THIS SHOWING ★</div>
+      <article class="article-body" id="modalBody"></article>
+
+      <div class="article-bottom">
+        <button onclick="closeArticle()">Back to the Journal</button>
       </div>
-    </article>
+
+    </div>
   </div>
 
   <script>
-    /*
-      ADD YOUR ARTICLES HERE.
-
-      Categories:
-      - Pop Culture
-      - Storytelling
-      - Behind the Scenes
-
-      The first article is the welcome entry.
-      Replace the sample articles with your own whenever you're ready.
-    */
+    // ==========================================
+    // ARTICLES
+    // Add future articles inside this array.
+    // ==========================================
 
     const posts = [
       {
-        id: "welcome",
-        title: "Welcome to Drive-In and Diaries",
-        category: "Storytelling",
-        date: "November 4, 2026",
-        era: "Introduction",
-        art: "Stories Beyond the Screen",
-        artStyle: "art-cream",
-        excerpt: "A journal about pop culture, creativity, and the stories that shape us.",
+        id: "stories-we-carry-with-us",
+        title: "Stories We Carry With Us",
+        category: "The Stories We Love",
+        date: "November 2026",
+        era: "2026",
+        excerpt: "The stories we read, watch, and create have a way of staying with us. Sometimes they inspire something new; sometimes they remind us why we love storytelling in the first place.",
+
         body: `
-          <p>Welcome to Drive-In and Diaries!</p>
-
-          <p>I've always believed that stories are more than just entertainment.
-          A movie can change the way you look at something. A comic can introduce
-          you to an idea you never considered. A video game can make you feel
-          like you've lived another life. A song can bring you back to a moment
-          you thought you'd forgotten.</p>
-
-          <p>And sometimes, the stories we experience influence the stories
-          we want to tell ourselves.</p>
-
-          <p>That's what this website is about.</p>
-
-          <h3>More Than Reviews</h3>
-
-          <p>You'll find thoughts on movies, television, comics, video games,
-          music, and all kinds of pop culture here. But I don't want this to
-          be just another review site. I want to explore why stories work,
-          why they don't, what makes characters memorable, and what we can
-          learn from the creative decisions behind them.</p>
-
-          <p>I'll also be talking about my own creative journey, including
-          the ideas and experiences that influence my work as the creator
-          of Singerverse. Not every entry will be about my universe, but
-          the things I experience will inevitably find their way into
-          how I think about it.</p>
-
-          <h3>Why a Drive-In?</h3>
-
-          <p>There's something special about the idea of a drive-in theater.
-          It's a place where people gather to experience a story together.
-          It's nostalgic, a little romantic, and full of personality.
-          It feels like the right home for a journal about the stories
-          that stay with us.</p>
-
-          <p>So, consider this the opening night. There's plenty more
-          to come, and I hope you'll stick around for the next showing.</p>
-        `
-      },
-
-      {
-        id: "placeholder-pop-culture",
-        title: "The Stories We Keep Coming Back To",
-        category: "Pop Culture",
-        date: "11/04/2026",
-        era: "Pop Culture",
-        art: "The Stories We Love",
-        artStyle: "",
-        excerpt: "A future entry exploring the characters, franchises, and worlds that keep drawing us back.",
-        body: `
-
-        <!--  This is a placeholder for a future article. -->
-          <p>The stories of DC, Marvel, and Dynamite </p>
-          <!--Replace this entry with your thoughts on a movie, television
-          series, comic, video game, musician, or anything else in pop culture. -->
-          <p> # Stories We Carry With Us
-*On revisiting old favorites, discovering unfamiliar characters, and finding inspiration in unexpected places.*
-
-There's something interesting about the way stories connect with one another. Sometimes it's intentional, sometimes it's a coincidence, and sometimes it's a connection you don't recognize until you're experiencing something completely different.
-
-This week, I've been reading *Starman: Sons of the Father* (2001), *Psylocke: Ninja* (2026), *Milk Wars* (2018), and *Red Sonja* (2005). I've also finished Season 2 of *Cyberpunk 2077* and have been keeping up with *VisionQuest* and *Get Jiro*.
-
-Although these stories occupy very different corners of pop culture, I've found myself thinking about several ideas that overlap with stories I've been developing myself.
-
-## Looking Back and Moving Forward
-
-My primary goal with *Starman: Sons of the Father* was simple: finish the series of my favorite hero. I won't spoil anything, especially since this is the last book in his series, but I will say that it's a story where appreciation of the past can cloud someone's judgment of the future.
-
-There's something compelling about that idea. Our experiences and memories shape how we see the world, but they can also prevent us from recognizing what comes next. Sometimes, holding onto what we love can make it harder to accept that things have changed.
-
-The other comics were selected partly because they aren't particularly well known to the general public, at least compared with some of the characters and properties they feature.
-
-We've seen Psylocke and Red Sonja in film, and some of the characters from *Milk Wars* have appeared outside the event itself. However, I wanted to explore these stories beyond their more recognizable appearances.
-
-*Red Sonja* has introduced me to a story about people making their own choices. I'm still only at the beginning, so I don't want to draw conclusions about where it goes. *Psylocke: Ninja*, meanwhile, gives me another opportunity to explore a character whose history is already complicated. I'm interested in seeing how additional context changes the way I understand her.
-
-These are different approaches to revisiting characters: one explores the consequences of personal choices, while the other adds context to an already established history.
-
-## When Other Stories Remind You of Your Own
-
-On the television side, I've finished *Cyberpunk 2077* Season 2 and have been following *VisionQuest* and *Get Jiro*. Each has its own storylines, characters, and ideas, but watching them has also made me think about multiple storylines I've been developing.
-
-In particular, *Get Jiro* reminded me of something a friend and I worked on called *The Bartender*.
-
-The similarities were hard to ignore. Both Jiro and the Bartender take revenge on the criminal underworld after their respective sanctuaries are disrespected. Their establishments aren't simply businesses. They're places that represent something personal, and when that is taken away, their responses become much more than ordinary retaliation.
-
-That connection made me want to revisit our original story.
-
-*The Bartender* follows John Jacket, the owner of a speakeasy called the Silent Tavern. John wants to help his community, but when local mobsters demand protection money, he refuses. Their response is to shoot up his establishment, kill his patrons, and leave him alive.
-
-Rather than wait for the police to do something, John takes matters into his own hands. He adopts the name Bartender and begins fighting the mob.
-
-What starts as a personal vendetta eventually becomes something much larger, involving mysterious technology, resurrection, aliens, and a conspiracy that threatens the entire population.
-
-Looking back at the story, I find it interesting how quickly its original premise expands. It begins with someone trying to defend his home and the people who depended on it. By the end, he's fighting for something much larger than himself.
-
-That progression is one of the things I enjoy about storytelling. A character can begin with a very personal motivation and find themselves caught up in circumstances they never anticipated.
-
-## From the Notebook: The Bartender
-
-*The following is the original story developed with my friend. Rather than simply discussing its similarities to Get Jiro, I wanted to include the actual story here.*
-
-### The Bartender — Act I
-
-There was a time when the mob had control over everything. John Jacket, owner of a speakeasy called the Silent Tavern, wanted nothing more than to help his community. One day, while tending to his bar, some mobsters walked in asking for protection money. John adamantly refused.
-
-The mobsters, not keen on taking no for an answer, retaliated by shooting up the tavern, killing everyone inside and stealing their money. They killed all but one, deciding to spare John his life so they could one day return to him for later payment.
-
-John, anticipating their return and outraged over the death of his innocent patrons, decided to do what the police wouldn't and fight back against the local mob. He adopted the mantle of Bartender and swore to destroy all the mobs he came across.
-
-Later, SmartPlayer, the mob boss above the mobsters that shot up the Silent Tavern, got word that his men destroyed a tavern and was furious. No one was meant to shoot up the bar. While SmartPlayer played chess with the underboss, he had his men "seen to" for their actions. He hadn't yet realized the war that was already started.
-
-The Bartender began beating up thugs, asking them who had sent those guys to his bar. After days of "investigation" and many people "questioned," he finally had the name of the mob boss that had his goons visit his speakeasy: SmartPlayer.
-
-He headed to SmartPlayer's Maroni Diner with only violence in mind. It was an open secret that the Maroni Diner was owned by SmartPlayer, and that only his most loyal goons were allowed to eat there.
-
-The Bartender rushed into the diner with knives in hand, and with one elegant knife throw after another, he methodically killed all the mobsters at the entrance of the diner. He made his way to the back of the diner, stabbing through all of the goons that he could find until finally, he saw the door that read "bosses chambers."
-
-He spent a moment to reflect on his actions, taking the time not only to ease his nerves, but also to pick up a gun that was dropped from one of his many victims. Finally ready, he kicked down the door, fully expecting to be riddled with bullets once he entered the room, but was surprised to see SmartPlayer and his underboss calmly playing chess with no regard for the massacre that just occurred.
-
-SmartPlayer, calmed by the thought that the corrupt police would be there in a matter of minutes, greeted the Bartender with a simple "Welcome to my diner."
-
-This infuriated the Bartender, and he immediately shot the underboss in the head with a gun he'd stolen from a goon mere moments earlier. Thus began their discussion.
-
-**SmartPlayer:** Well, that wasn't very nice now, was it?
-
-**John:** You son of a bitch! Do you know how many people you've hurt? How many lives were destroyed? How many people you've left to wither away with nothing left to live for?
-
-**SmartPlayer:** Well, lemme guess. You're one of those people? C'mon kid, it's business. No matter what we did, I'm sure it wasn't personal.
-
-**John:** Your men destroyed my speakeasy and killed my patrons!
-
-**SmartPlayer:** Oh, that was you, huh? Well, don't worry. The ones that did it have already been "taken care of," so to speak. Capiche?
-
-**John:** Your men killed an entire speakeasy of people; that doesn't only happen from some rogue mobsters! It had to have come from someplace higher up.
-
-**SmartPlayer:** Oh? And what have you just done? Did your killing of an entire diner come from higher up also? I don't think so. If I had to guess, it came from one rogue business owner.
-
-**John:** No, it's different.
-
-**SmartPlayer:** Now listen. I ain't mad about you killing MY loyal patrons, so let's just say we're even and go our separate ways.
-
-**John:** No, they're different. My patrons were innocent, and yours were criminals; your act of violence was unwarranted while mine was a response.
-
-**SmartPlayer:** Oh c'mon. We both know your patrons were as much criminals as mine; what else is a speakeasy, but a haven for criminals looking for an illegal drink?
-
-**John:** No but—
-
-**SmartPlayer:** NO! Now you listen here, boy, our crimes are fairly equivalent, and no one holds the moral high ground here. So let's stop this charade that you are obtaining justice while I'm an immoral criminal. You are no better than me. You've killed some of my friends and even my most trusted right-hand man. That gives me every right to hunt down every speakeasy in this city and force you to watch while I burn them to the ground. But I won't. That's because I respect you and your passion, and that I understand you are a distraught man blinded by your emotions.
-
-So here's what I'm going to say now. I find it impressive that you got through my Tommy-gun-wielding boys with a small pistol and a bat. So I'd like to propose an offer to you to work as muscle for me for a couple of years, and you can live easy for the rest of your life, even open a new speakeasy anywhere you can imagine if you want. So how about it, huh?
-
-**John:** You fucking disgust me.
-
-John, entirely overcome with emotions, jumps on SmartPlayer and beats his head in with a gun. And just like that, the conversation came to an end with the growing sounds of police sirens accompanied by a gunshot that left SmartPlayer's head falling upon his chessboard.
-
-Before leaving the scene of the crime, the Bartender looked around the room for a moment to soak in his final victory over the mob boss, but that was when he saw it. A helmet that, despite appearing perfectly normal, gave off a mystical aura that was hard for him to ignore after he noticed it.
-
-He slowly approached the pedestal the helmet rested upon, taking it into his hands and raising it to his head. Without a second thought, he put it on.
-
-And, with this final act, the Bartender left the diner satisfied. He had yet to realize that this was just Act One in a much larger scheme.
-
-### Act II
-
-**John:** What the hell is happening?
-
-Now outside of the diner, he can't help but take note of how chilly the night got while he was in the diner. But this short moment of bliss is shattered as he hears the sirens inch closer and closer.
-
-He runs across the street into an alley, where he climbs up a fire escape to watch the cops arrive. Trying to get a better look at the scene, John tries to take the helmet off only to find that he is unable to. He desperately attempts to remove the helmet, yet despite his tireless efforts, the helmet doesn't budge an inch.
-
-He frantically looks around. He stops attempting to pull it off and starts to flee the scene. Within moments, he hears the sirens. He runs through the alleyway to the next street over. He climbs up the fire escape to watch the cops arrive.
-
-**John:** I'm getting too old for all this running.
-
-As the spotlight is shined, John ducks down, hiding himself from the light. When the light leaves, he gets up to see SmartPlayer and the underboss walking to the police car as if it were their own taxi service.
-
-**John:** Damn it! How did they survive?
-
-John climbs down the fire escape and runs across the street and climbs up the fire escape of the Maroni Diner. He looks down to see SmartPlayer with a special helmet.
-
-**John:** The helmet revives people?
-
-John waves his hand in front of his helmet. Then the user interface shows up. Text appears explaining how the helmet works. It keeps people alive if shot in the head, but must stay on the head until the person is dead.
-
-John realizes that in the settings there is a code that turns everyone who has a helmet into a puppet.
-
-**John:** Fuck! He's going to turn the people of this world into his puppets!
-
-John grabs his revolver and aims at the driver of the cop car. He fires, killing the driver.
-
-**Underboss:** Protect the Godfather!
-
-The goons scramble around and set up their defenses. John jumps down from the fire escape and proceeds to kill the man below. Now armed with a Tommy gun, he proceeds to mow down the goons with laser-like accuracy.
-
-The underboss grabs two Tommy guns from his guards. He proceeds to fight the Bartender. The battle ensues through multiple streets on top of SmartPlayer's cop car.
-
-**Underboss:** You will die here!
-
-**John:** I will put you in the ground multiple times over for eternity!
-
-The underboss runs out of ammo and runs up to the Bartender for a fist fight and is shot in the heart with the Bartender's final bullet.
-
-The Bartender jumps off the car, throwing a knife, popping the tire. The cop car crashes into a diner on the outskirts of town.
-
-### Act III
-
-The Bartender rushes in, chasing SmartPlayer into the diner. He fights off other loyal mafia members and makes his way into a laboratory.
-
-Inside, he encounters these tall black aliens who try to grab him and experiment on him. Once they grab him, they put him on the operating table. He is sedated and is forced to relive his darkest moments.
-
-He eventually breaks free after hearing SmartPlayer's voice. He gets up and starts killing the aliens in the room. He looks outside to see that the laboratory is flying.
-
-**Bartender:** What the hell is happening?
-
-The underboss walks in.
-
-**Underboss:** We are going to enslave the entire population. Making sure no one can stop us, not even the aliens.
-
-**Bartender:** It seems you're going to betray them.
-
-**Underboss:** They are the last of their kind, and our weapons keep them dead.
-
-The underboss walks in to fight the Bartender in a fist fight. In the end, the Bartender tosses the underboss's body out the window. The Bartender grabs some sedation needles and exits the room.
-
-The Bartender runs into the cockpit.
-
-**Bartender:** Everyone, the SmartPlayer is going to betray you! He's going to kill the rest of your species and enslave ours!
-
-**SmartPlayer:** I'm not going to enslave our race; they are! I've made a deal with them. They take what they need, and we make sure we don't get in their way.
-
-**Oakbonker:** That is true; we were going to enslave your species, and we reconsidered.
-
-**Bartender:** Your goons killed my people; I seek retribution!
-
-The Bartender starts throwing needles at the aliens, sedating them, and fights SmartPlayer for the last time.
-
-**Bartender:** You are not leaving this ship!
-
-**SmartPlayer:** Are you crazy! We are both going to die without a pilot at the helm!
-
-**Bartender:** Then we both die!
-
-The battle ensues, and the last thing SmartPlayer sees is a metal pipe being stabbed into his heart and a glass stabbed into his back.
-
-When the ship crashes, the two men are buried. The Bartender is known as a vigilante and SmartPlayer as the man who would have sold the world.
-
----
-
-## The Stories After the Stories
-
-Revisiting *The Bartender* also makes me think about how much a story can change once its original characters have moved beyond their beginnings.
-
-Some of my newer Singerverse scenes explore that idea through characters who have already lived through their own adventures. Instead of introducing another conflict for them to overcome, these moments focus on what happens afterward: the relationships they've formed, the people they've lost, and the lives they still have to live.
-
-### Colosseo and Deranged — A Final Request
-
-**Deranged:** Can I come in? I'm not sure how long I have left.
-
-**Colosseo:** Sure, yes, come in, have a seat.
-
-The two take a seat in the living room.
-
-**Colosseo:** How are you here?
-
-**Deranged:** The gods I communed with have vanished from reality. Reality has lost its meaning. I and the Star Singer have both been brought back after the gods vanished. I've taught my daughter to be better, and I came here to tell you to keep an eye on her. To not let her be consumed by the darkness.
-
-**Colosseo:** I'm happy to help, but what do you mean? What is happening?
-
-**Deranged:** Reality is shattering; my life is coming to its final end. I would've gone to the rest of the members of the Rainbow Riders to look after her, but they have their own lives; you are still revealing yourself.
-
-As of now, she has joined the new Rainbow Riders, but this team is learning to become a family like when I was a part of it. Though my team has partially disbanded, I think this new team can become what we were; I just want you to watch her, keep her from the darkness. I've done my best with my second wind.
-
-This conversation is less about a superhero's final battle and more about a father trying to make sure his daughter will be okay after he's gone. Deranged trusts Colosseo with something that matters more to him than any mission.
-
-It's a different kind of legacy. Instead of passing down a title, a weapon, or a responsibility to save the world, he's asking someone to help preserve the person his daughter has become.
-
-### Cutting the Cord — 2090 Miami Casino
-
-**King Cutlass:** Hey Rippy! It's your lucky day! I'm retiring from the pirate gig, gotta job with the government in exchange for my freedom.
-
-**Ripcord:** What about your crew?
-
-**King Cutlass:** Well, the Goth Queen took her exit a while back along with her friend. So all that's left are the two assholes. They can't man a ship themselves. I traded them in for my own agency, but if they become trouble, don't be afraid to call. I enjoyed our duels; too bad we won't do any more again.
-
-**Ripcord:** What kind of work are you doing for them?
-
-**King Cutlass:** Don't know yet, but all I can say is if it's going after you, I'll do it for a duel, but I won't bring you in. You've let me off the hook so many times; I'm willing to do it for ya.
-
-**Ripcord:** So now I'm down to Angler, Hammerhead, and Piranha. You got me thinking about retirement early.
-
-**King Cutlass:** We may exist in a world of superheroes, but that doesn't mean we aren't still regular people at the end of the day.
-
-This scene takes a different approach to the idea of what comes after an adventure. King Cutlass is retiring from piracy, and his relationship with Ripcord has developed beyond their previous duels. They're still rivals, but there's an understanding between them.
-
-I like that the conversation isn't treated as a major superhero event. It's two people talking about work, retirement, and the possibility that their lives might eventually move in different directions.
-
-That final line is important because it reminds us that the extraordinary circumstances of a superhero world don't erase the ordinary concerns of the people living in it.
-
-## Why I Keep Making These Connections
-
-Looking at all these stories together, I find myself returning to a few ideas.
-
-*Starman* makes me think about how the past can influence our judgment of the future. *Red Sonja* has me considering the choices people make for themselves. *Psylocke: Ninja* adds another layer to a character with an already complicated history. *Get Jiro* reminded me of an older story developed with a friend, and revisiting *The Bartender* gave me an opportunity to look at how that original idea grew.
-
-Then there are the Singerverse scenes, which explore what happens after the larger adventures are over. Characters retire, relationships change, teams become families, and people who once fought each other can eventually become friends.
-
-I don't think every story needs to make the same point, and I certainly don't think every similarity is intentional. But I enjoy recognizing these connections. They give me another way to appreciate the things I experience and another way to understand the things I create.
-
-That's ultimately what I want this journal to be: a place where I can talk about the stories I encounter, the ideas they leave behind, and the things those ideas inspire me to write.
-
-Sometimes the best part of finishing a story is discovering what it makes you think about next.
-
-**The credits roll. The diary opens.**</p>
-        `
-      },
-
-      {
-        id: "placeholder-storytelling",
-        title: "What Makes a Story Stick?",
-        category: "Storytelling",
-        date: "Coming Soon",
-        era: "Storytelling",
-        art: "Beyond the Credits",
-        artStyle: "art-pink",
-        excerpt: "An exploration of the characters, themes, and creative choices that make stories memorable.",
-        body: `
-
-        <!--This is a placeholder for a future storytelling article.-->
-          <p></p>
-          <!--Use this space to explore the craft of storytelling,
-          character development, worldbuilding, themes, or the ideas
-          that influence your own creative work.-->
-          <p></p>
-        `
-      },
-
-      {
-        id: "placeholder-behind-scenes",
-        title: "The Creative Process",
-        category: "Behind the Scenes",
-        date: "Coming Soon",
-        era: "Behind the Scenes",
-        art: "From the Notebook",
-        artStyle: "art-dark",
-        excerpt: "A look behind the curtain at the ideas, challenges, and discoveries that come with creating.",
-        body: `
-
-        <!--This is a placeholder for a behind-the-scenes entry. -->
-          <p></p>
-          <!-- Write about your creative process, the development of
-          Singerverse, lessons you've learned, or the unexpected ways
-          outside inspiration finds its way into your work.-->
-          <p></p>
+          <p>
+            Stories have a way of staying with us long after we've finished
+            reading a comic, watching a show, or putting down a controller.
+            Sometimes it's a character, sometimes it's a particular moment,
+            and sometimes it's an idea that follows us into our own creative work.
+          </p>
+
+          <p>
+            Lately, I've been revisiting some familiar corners of pop culture
+            while also exploring stories that I haven't spent as much time with.
+            Each one offers something different, whether it's a new perspective
+            on a character, an interesting approach to storytelling, or an idea
+            worth carrying into something of my own.
+          </p>
+
+          <h3>What I've Been Reading</h3>
+
+          <p>
+            One of my biggest reading goals has been to finish the
+            <em>Starman</em> series. I've been reading
+            <em>Starman: Sons of the Father</em> (2001), and it's especially
+            meaningful because Starman is one of my favorite heroes.
+            It's a series where appreciation of the past can sometimes cloud
+            judgment of the future. I don't want to spoil anything, especially
+            since this is the final book in the series, but it's been a rewarding
+            experience getting closer to the end of the journey.
+          </p>
+
+          <p>
+            I've also been reading <em>Psylocke: Ninja</em> (2026).
+            Psylocke is a character with a complicated history, and I wanted
+            to explore a story that might be less familiar to general audiences.
+            It's interesting to see a story provide more context for a character
+            who already has so much going on.
+          </p>
+
+          <p>
+            <em>Milk Wars</em> (2018) was another choice because it isn't
+            necessarily an event that everyone knows about. I've encountered
+            some of the characters featured in it outside of the event itself,
+            so it was interesting to see them brought together in this
+            particular story.
+          </p>
+
+          <p>
+            Finally, I've started reading <em>Red Sonja</em> (2005).
+            I'm still near the beginning, but one of the ideas that stands out
+            to me is the importance of people making their own choices.
+            It's an interesting direction for a story about characters trying
+            to determine their own paths.
+          </p>
+
+          <h3>What I've Been Watching</h3>
+
+          <p>
+            On the television side, I've finished
+            <em>Cyberpunk 2077</em> Season 2, while continuing to keep up with
+            <em>VisionQuest</em> and <em>Get Jiro</em>.
+          </p>
+
+          <p>
+            Watching <em>Get Jiro</em> brought an unexpected connection to mind.
+            It reminded me of a story that a friend and I developed called
+            <em>The Bartender</em>. Both stories explore characters who
+            retaliate against the criminal underworld after it disrespects
+            something important to them: their sanctuary.
+          </p>
+
+          <h3>When Stories Inspire Stories: The Bartender</h3>
+
+          <p>
+            <em>The Bartender</em> follows John Jacket, the owner of the
+            Silent Tavern. When mobsters demand protection money and he refuses,
+            they attack his establishment, killing patrons while deliberately
+            leaving John alive. That incident pushes him toward becoming
+            a vigilante, taking the fight directly to the people responsible.
+          </p>
+
+          <p>
+            What makes the story interesting to me is that John's conflict
+            isn't simply about defeating criminals. It's about what happens
+            when a place that represents safety and community is violated.
+            His tavern is more than a business. It's his sanctuary, and the
+            attack changes his relationship with the world around him.
+          </p>
+
+          <p>
+            John's pursuit eventually brings him face-to-face with SmartPlayer,
+            a mob boss who offers him a position in the criminal organization.
+            John refuses. Their confrontation becomes a clash of perspectives
+            about morality, justice, and the kind of person John is willing
+            to become.
+          </p>
+
+          <p>
+            The story also introduces a mysterious helmet with the ability
+            to keep its wearer alive after being shot in the head. However,
+            the helmet comes with a disturbing condition: it must remain
+            on the wearer's head until death. It also contains a code that
+            allows someone to control the people wearing these helmets.
+          </p>
+
+          <p>
+            As the story continues, John discovers that the conflict is much
+            larger than the mob. His pursuit leads him to a flying laboratory,
+            where mysterious tall black aliens are experimenting on SmartPlayer
+            and forcing him to relive his darkest memories. John uncovers a plan
+            that could enslave humanity, along with a betrayal involving
+            the aliens themselves.
+          </p>
+
+          <p>
+            The final confrontation brings John and SmartPlayer together once
+            more. Their conflict ends in a crash, taking both of them with it.
+            In the aftermath, Bartender is remembered as a vigilante, while
+            SmartPlayer is remembered as a man who would have sold the world.
+          </p>
+
+          <p>
+            Looking back at this story while watching <em>Get Jiro</em> made
+            me appreciate how different stories can approach similar ideas.
+            A character's sanctuary can be a restaurant, a tavern, or somewhere
+            else entirely. What matters is what that place represents to them,
+            and what happens when someone takes it away.
+          </p>
+
+          <h3>Stories of What Comes Next</h3>
+
+          <p>
+            Beyond the stories I read and watch, I've also been thinking
+            about the stories I want to tell myself. A lot of my creative
+            interests revolve around what happens after the big adventure:
+            what characters do with their lives, what they leave behind,
+            and how their relationships change.
+          </p>
+
+          <p>
+            One example comes from a scene involving Colosseo and Deranged.
+            Deranged visits Colosseo as reality begins to fall apart and his
+            own life approaches its end. He isn't there to fight a villain
+            or save the universe. He's there because he has something
+            important to ask of someone he trusts.
+          </p>
+
+          <p><strong>Colosseo and Deranged</strong></p>
+
+          <blockquote>
+            <p>
+              <strong>Colosseo:</strong> Deranged! What brings you here to my
+              abode this day? I thought you sacrificed yourself and Katan
+              to bring back Ringer and Rubyfist.
+            </p>
+
+            <p>
+              <strong>Deranged:</strong> Can I come in? I'm not sure how long
+              I have left.
+            </p>
+
+            <p>
+              <strong>Colosseo:</strong> Sure, yes, come in, have a seat.
+            </p>
+
+            <p><em>The two take a seat in the living room.</em></p>
+
+            <p>
+              <strong>Colosseo:</strong> How are you here?
+            </p>
+
+            <p>
+              <strong>Deranged:</strong> The gods I communed with have vanished
+              from reality. Reality has lost its meaning. I and the Star Singer
+              have both been brought back after the gods vanished. I've taught
+              my daughter to be better, and I came here to tell you to keep
+              an eye on her. To not let her be consumed by the darkness.
+            </p>
+
+            <p>
+              <strong>Colosseo:</strong> I'm happy to help, but what do you mean?
+              What is happening?
+            </p>
+
+            <p>
+              <strong>Deranged:</strong> Reality is shattering; my life is
+              coming to its final end. I would've gone to the rest of the
+              members of the Rainbow Riders to look after her, but they have
+              their own lives; you are still revealing yourself. As of now,
+              she has joined the new Rainbow Riders, but this team is learning
+              to become a family like when I was a part of it. Though my team
+              has partially disbanded, I think this new team can become what
+              we were; I just want you to watch her, keep her from the darkness.
+              I've done my best with my second wind.
+            </p>
+          </blockquote>
+
+          <p>
+            What I like about this scene is that the stakes are enormous,
+            but the conversation itself is personal. Reality is shattering,
+            and Deranged is nearing the end of his life, yet his biggest
+            concern in this moment is his daughter. He wants to make sure
+            she has someone watching over her after he's gone.
+          </p>
+
+          <p>
+            It's a story about legacy, trust, and fatherhood. The older
+            generation may not be around forever, but that doesn't mean
+            the next generation has to lose everything they learned from them.
+          </p>
+
+          <p>
+            Another example comes from a much later point in the Singerverse,
+            in a scene called <em>Cutting The Cord</em>. Rather than focusing
+            on a major battle, it looks at two characters discussing retirement
+            and the changing nature of their relationship.
+          </p>
+
+          <p><strong>Cutting The Cord — 2090 Miami Casino</strong></p>
+
+          <blockquote>
+            <p>
+              <strong>King Cutlass:</strong> Hey Rippy! It's your lucky day!
+              I'm retiring from the pirate gig, gotta job with the government
+              in exchange for my freedom.
+            </p>
+
+            <p>
+              <strong>Ripcord:</strong> What about your crew?
+            </p>
+
+            <p>
+              <strong>King Cutlass:</strong> Well, the Goth Queen took her exit
+              a while back along with her friend. So all that's left are the
+              two assholes. They can't man a ship themselves. I traded them
+              in for my own agency, but if they become trouble, don't be afraid
+              to call. I enjoyed our duels; too bad we won't do any more again.
+            </p>
+
+            <p>
+              <strong>Ripcord:</strong> What kind of work are you doing for them?
+            </p>
+
+            <p>
+              <strong>King Cutlass:</strong> Don't know yet, but all I can say
+              is if it's going after you, I'll do it for a duel, but I won't
+              bring you in. You've let me off the hook so many times;
+              I'm willing to do it for ya.
+            </p>
+
+            <p>
+              <strong>Ripcord:</strong> So now I'm down to Angler, Hammerhead,
+              and Pirahanna. You got me thinking about retirement early.
+            </p>
+
+            <p>
+              <strong>King Cutlass:</strong> We may exist in a world of
+              superheroes, but that doesn't mean we aren't still regular
+              people at the end of the day.
+            </p>
+          </blockquote>
+
+          <p>
+            This scene is a different kind of moment. King Cutlass is moving
+            on from piracy, Ripcord is thinking about his own future, and
+            their relationship has changed. They may have spent their time
+            fighting one another, but there's still a mutual understanding
+            between them.
+          </p>
+
+          <p>
+            That final line captures something I enjoy exploring in superhero
+            stories. Even in a world filled with extraordinary people,
+            they still have ordinary concerns. They get older, change careers,
+            retire, and wonder what comes next.
+          </p>
+
+          <h3>Final Thoughts</h3>
+
+          <p>
+            Whether I'm reading about a hero confronting their past, watching
+            a character defend something they care about, or developing a story
+            with a friend, I keep finding connections between the things
+            I experience and the things I create.
+          </p>
+
+          <p>
+            That's one of the things I love about storytelling. A story
+            doesn't have to be directly connected to another to leave an
+            impression. Sometimes an idea carries over, sometimes a character
+            inspires a new character, and sometimes a particular scene reminds
+            you of something you already wanted to explore.
+          </p>
+
+          <p>
+            The stories we love don't simply end when we finish them.
+            They become part of how we think about stories, characters,
+            and the worlds we want to create next.
+          </p>
         `
       }
     ];
 
+    // ==========================================
+    // DISPLAY ARTICLES
+    // ==========================================
+
     const postsGrid = document.getElementById("postsGrid");
-    const emptyState = document.getElementById("emptyState");
-    const searchInput = document.getElementById("search");
-    const filterButtons = document.querySelectorAll(".filter-btn");
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-button");
 
     let activeCategory = "All";
-
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      })[char]);
-    }
 
     function renderPosts() {
       const searchTerm = searchInput.value.toLowerCase().trim();
@@ -1431,81 +1049,116 @@ Sometimes the best part of finishing a story is discovering what it makes you th
 
         const matchesSearch =
           post.title.toLowerCase().includes(searchTerm) ||
-          post.excerpt.toLowerCase().includes(searchTerm) ||
-          post.category.toLowerCase().includes(searchTerm);
+          post.category.toLowerCase().includes(searchTerm) ||
+          post.excerpt.toLowerCase().includes(searchTerm);
 
         return matchesCategory && matchesSearch;
       });
 
-      postsGrid.innerHTML = filteredPosts.map(post => `
-        <article class="post-card">
-          <div class="post-art ${escapeHTML(post.artStyle || "")}">
-            <span>${escapeHTML(post.art)}</span>
-          </div>
+      postsGrid.innerHTML = "";
 
-          <div class="post-info">
-            <div class="post-meta">
-              ${escapeHTML(post.category)} · ${escapeHTML(post.date)}
-            </div>
+      if (filteredPosts.length === 0) {
+        postsGrid.innerHTML =
+          '<p class="empty-message">No stories found. Try another search.</p>';
+        return;
+      }
 
-            <h3>${escapeHTML(post.title)}</h3>
-            <p>${escapeHTML(post.excerpt)}</p>
+      filteredPosts.forEach(post => {
+        const card = document.createElement("article");
+        card.className = "post-card";
 
-            <button class="text-link" onclick="openPost('${escapeHTML(post.id)}')">
-              Read entry →
-            </button>
-          </div>
-        </article>
-      `).join("");
+        const category = document.createElement("span");
+        category.className = "category-label";
+        category.textContent = post.category;
 
-      emptyState.style.display = filteredPosts.length ? "none" : "block";
+        const title = document.createElement("h3");
+        title.textContent = post.title;
+
+        const meta = document.createElement("div");
+        meta.className = "post-meta";
+        meta.textContent = post.date;
+
+        const excerpt = document.createElement("p");
+        excerpt.textContent = post.excerpt;
+
+        const button = document.createElement("button");
+        button.className = "read-button";
+        button.textContent = "Read Article →";
+        button.addEventListener("click", () => openArticle(post.id));
+
+        card.append(category, title, meta, excerpt, button);
+        postsGrid.appendChild(card);
+      });
     }
+
+    // ==========================================
+    // CATEGORY FILTERS
+    // ==========================================
 
     filterButtons.forEach(button => {
       button.addEventListener("click", () => {
         filterButtons.forEach(item => item.classList.remove("active"));
-        button.classList.add("active");
 
+        button.classList.add("active");
         activeCategory = button.dataset.category;
+
         renderPosts();
       });
     });
 
+    // ==========================================
+    // SEARCH
+    // ==========================================
+
     searchInput.addEventListener("input", renderPosts);
 
-    function openPost(id) {
+    // ==========================================
+    // ARTICLE READER
+    // ==========================================
+
+    const articleModal = document.getElementById("articleModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMeta = document.getElementById("modalMeta");
+    const modalBody = document.getElementById("modalBody");
+
+    function openArticle(id) {
       const post = posts.find(item => item.id === id);
+
       if (!post) return;
 
-      document.getElementById("readerCategory").textContent =
-        post.category + " · " + post.era;
+      modalTitle.textContent = post.title;
+      modalMeta.textContent = post.category + " · " + post.date;
+      modalBody.innerHTML = post.body;
 
-      document.getElementById("readerTitle").textContent = post.title;
-      document.getElementById("readerMeta").textContent =
-        post.date + " · Drive-In and Diaries";
-
-      document.getElementById("readerBody").innerHTML = post.body;
-
-      document.getElementById("readerOverlay").classList.add("open");
+      articleModal.classList.add("open");
       document.body.style.overflow = "hidden";
+
+      document.querySelector(".article-window").scrollTop = 0;
+      modalBody.scrollTop = 0;
     }
 
-    function closePost() {
-      document.getElementById("readerOverlay").classList.remove("open");
+    function closeArticle() {
+      articleModal.classList.remove("open");
       document.body.style.overflow = "";
     }
 
-    function overlayClick(event) {
-      if (event.target.id === "readerOverlay") {
-        closePost();
+    // Close when clicking outside the article.
+    articleModal.addEventListener("click", event => {
+      if (event.target === articleModal) {
+        closeArticle();
       }
-    }
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closePost();
     });
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Close with Escape.
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && articleModal.classList.contains("open")) {
+        closeArticle();
+      }
+    });
+
+    // ==========================================
+    // INITIALIZE THE JOURNAL
+    // ==========================================
 
     renderPosts();
   </script>
