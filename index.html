@@ -42,7 +42,7 @@ function formatExcerpt(raw){
   const inline = s => escapeText(decode(s)).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');
   return raw.split(/\n\s*\n+/).map(block=>{
     const line=block.trim(); if(!line) return '';
-    const sceneLocations = ["Malta","Tronecones México","Nebraska","Texas","Freedom, California","Taylortech Campus","Solomon’s Lab","Kent Ohio","Hollywood","Outside Time and Space","Brooklyn, New York 04/21/2047","Morningstar’s Trailer","Factory Somewhere by Kent","2046 Freedom California","2023 Taylor Tech Campus","Ohio","2047","2 Months After the Cruasia Incident","Scene 47"];
+    const sceneLocations = ["Malta","Tronecones México","Nebraska","Texas","Freedom, California","Taylortech Campus","Solomon’s Lab","Kent Ohio","Hollywood","Outside Time and Space","Brooklyn, New York 04/21/2047","Morningstar’s Trailer","Factory Somewhere by Kent","2046 Freedom California","2023 Taylor Tech Campus","Ohio","2047","2 Months After the Cruasia Incident","Scene 47", "Warehouse Location, ##/##/20##"];
     if(/^\*\*([^*]+)\*\*$/.test(line) && sceneLocations.includes(line.replace(/^\*\*/,'').replace(/\*\*$/,'').trim())){
       return `<p class="scene">${inline(line)}</p>`;
     }
@@ -73,10 +73,119 @@ const bartenderExcerpt = `
 <p>In the aftermath, the Bartender is remembered as a vigilante who fought the criminal underworld. SmartPlayer is remembered as the man who would have sold the world.</p>
 `;
 
+const webExcerpt = `**Warehouse Location, ##/##/20##&#xA0;**
+
+**Web Inner Monologue**- I’ve been tracking down Sekwaf Yug for over 20 years. I still don’t know who he is. I’ve seen him before, out in the open. I’ve seen him with his black knives, black cape, and red sleeve. He deems himself a savior, a revolutionary. I’ve fought him multiple times, worked with him multiple times, and yet I know nothing. I’m immortal, for godsakes. The Scarab Serpent has been backed by Sekwaf; her motives are still unknown. From what I’ve heard, her powers are to control animals and bugs. The people of Egypt see her as a goddess; from what I can guess is that she got her powers as I did, or from a serum. My acquaintances, Distance and Direction, mercenary brothers, seek to make the world a better place, for a price, though. These guys are the most reliable people I’ve ever worked with. The Bartender has been trying to kill Sekwaf for a long time, yet is always a step behind. To me, I think his symbiotic helmet is to blame. I’ve teamed up with him now and again. Honestly, still one of the best people I’ve ever worked with. He puts down the scum, but his morals have become iffy due to his age. He’s become more brutal in his old age, not really understanding people. His trainee, Ben Storian, is a good man who doesn’t mind getting his hands dirty but has a level head with his symbiotic helmet. Now time for my hunt.
+
+Distance sits perched a few buildings away, looking into the warehouse, while Direction goes in.
+
+**Web**- Direction, Distance, do you have anything on the warehouse?
+
+**Distance**- Nothing yet, boss. From the look of it, it’s full of fireworks.
+
+**Direction**- I can confirm, it’s full of them.
+
+**Sekwaf Yug**- I see the naughty masked man enter my place of worship. What brings you here tonight?
+
+**Direction**- I’ve been hired to find you.
+
+**Sekwaf Yug**- And now you’ve found me. What did your employer want? Does he know what day it is?
+
+**Direction**- I will not disclose my employer; it is in my code of arms. As for today, it is November 5th.
+
+**Sekwaf Yug**- Do you know what they? Remember Remember the 5th of November. Do you know the significance of this date?
+
+**Direction**- Fawkes’s bombing, to show power, that it needs to be controlled by the people, not a dictator.
+
+**Sekwaf Yug**- You are somewhat correct in that matter. Truth to tell, he was going to change the hands of power; for me, I want to remove all the hands of power. No one man should have any power over another, and that is how I remember the 5th of November, and how the whole world should see to it!
+
+**Direction**- I see why my employer wanted you. Put your hands up!
+
+Sekwaf raises his hands as his conductor’s wand, and soon the fireworks start going off. Direction starts to run out, but Sekwaf charges after him, stabbing him in the back with his wand and pinning Direction to the floor.
+
+**Direction**- You think you can kill change? My death will take you with me, and by doing so, my code is honored.
+
+**Sekwaf Yug**- I will not die here, but you will, my friend.
+
+Sekwaf leaves the building while Direction bleeds out.
+
+**Direction**- I’m no man of god, but I pray that my brother honors the code, and that my death mattered.
+
+Web walks into the warehouse, grabs Direction, and carries him out of the warehouse.
+
+**Direction**- Thank you, Web.
+
+**Web**- I’ll get you patched up, but your contract, it’s been altered so that you may heal and have time for your brother.
+
+Distance runs over to help Web carry him.
+
+**Distance**- Will he survive?
+
+**Web**- I hope so. I’m not a ray of sunshine, but maybe.
+
+Sekwaf Yug walks up to the trio.
+
+**Sekwaf Yug**- The employer, correct?
+
+**Web**- Yes.
+
+**Sekwaf Yug**- Why are we at odds when we fought side by side many times before?
+
+**Web**- Those times were when we had common interests, but we don’t now or ever.
+
+**Sekwarf Yug**- We’ve taken down dictators and CEOs. We were revolutionaries; we should be working together, not fighting each other.
+
+**Web**- I’ve fought people like you for years; you are a dime a dozen.
+
+Sekwaf Yug pulls over King Charles the Third. With a camera crew filming them in front of the warehouse.
+
+**Web**- Don’t you dare!
+
+**Sekwaf Yug**- Today shall be known as No Kings Day!
+
+Sekwaf pulls out a gun and shoots the king in the head.
+
+**Sekwaf Yug**- To my audience around the globe, I am Sekwaf Yug. I am the leader of Anonymous, and my goal is for no one to have more power than another. To those who may say the King is a figurehead, they are correct to an extent, but they are a symbol of power to hold over another!
+
+**Web**- Symbols will always rise, and false revolutionaries shall fall like you, Sekwaf Yug.
+
+**Sekwaf Yug**- Do you believe in the heroes in this world, their power?`;
+
+
+  
+  
 const posts = [
  {id:'welcome',title:'Why Drive-In and Diaries?',category:'Storytelling',date:'November 2026',era:'1950s • Opening feature',excerpt:'A starting point for a journal about pop culture, personal perspective, and the stories still waiting to be told.',body:`<p>Stories don't end when the credits roll. Sometimes the most interesting part happens afterward: when you think about what you watched, replay a moment from a game, revisit a comic, or carry a character's words into your own life.</p><p>I wanted a place to collect those thoughts. Not just reviews, and not just commentary, but observations about why stories work, what they make us feel, and what they might inspire us to create.</p><p>I'm also building stories of my own. The things I experience as an audience member can influence the worlds I make, sometimes directly and sometimes in ways I won't recognize until much later.</p><p>This journal is where those connections can live. It's a work in progress, just like the stories that inspire it.</p>`},
  {id:'stories-we-carry-with-us',title:'Stories We Carry With Us',category:'The Stories We Love',date:'November 2026',era:'Last week • The Stories We Love',excerpt:'The comics, shows, characters, and original stories that remind us why the people inside a story matter.',body:`<p>There's something interesting about the way stories follow us after we've finished reading a comic, watching a show, or putting down a controller. Sometimes it's a character we can't stop thinking about. Other times it's a particular scene, a relationship, or an idea that finds its way into something we're creating ourselves.</p><p>This week, I found myself connecting <em>Get Jiro</em> with an original story I developed with a friend: <em>The Bartender</em>. Both stories make the places their characters care about important parts of their identities. When those places are threatened or disrespected, the response becomes personal.</p><p>John Jacket's Silent Tavern is more than a business to him. It is something he built for his community. When the mob destroys it, John becomes the Bartender and takes the fight to the people responsible. The story grows into something much larger, but its emotional starting point remains the destruction of a place and the lives connected to it.</p><p>That's one of the things I enjoy exploring in stories: the way an ordinary location can become the center of a character's entire world. The action might be what gets a story moving, but the characters and what they care about are what make me want to stay.</p>${bartenderExcerpt}`},
  {id:'stories-we-leave-behind',title:'When the Stories We Tell Become the Stories We Leave Behind',category:'The Stories We Love',date:'November 2026',era:'This week • The Stories We Love',excerpt:'A week of stories about identity, legacy, relationships, and the farewells that give a universe its meaning.',body:`<h3>What I've Been Watching</h3><p>This week I finished <em>VisionQuest</em> and watched <em>The Mask of Zorro</em>, <em>V for Vendetta</em>, <em>Drummerboy</em>, and <em>Wildwood</em>. I also continued <em>Get Jiro</em>, reaching episode seven, and started the first two episodes of season three of <em>Dexter: Resurrection</em>.</p><p><em>The Mask of Zorro</em> and <em>V for Vendetta</em> both made me think about masks as something larger than disguises. A mask can become an ideal, a cause, or an identity that outlives the person wearing it. That connects to Morningstar, whose public identity and showmanship are important to him, but who still has to live with the person underneath the performance.</p><h3>What I've Been Reading</h3><p>I've started Alan Moore's <em>Tom Strong</em> and am currently on issue six. I also finished <em>The Visions</em> and read the third issue of Darcy Van Poelgeest's <em>Doom Patrol</em>. I've finished the <em>Harley</em> and <em>Elvira</em> series I was following, and read approximately the first fourteen or fifteen issues of the 1985 <em>Green Hornet</em> series. <em>Doom Patrol</em> is a different experience: among the characters and series I pick up issue by issue, this is one group I've started enjoying and wanting to learn more about at this point in their story.</p><p><em>Tom Strong</em> also connects directly to Solomon Tough, the character most influenced by my introduction to Tom Strong through <em>The Terrifics</em>. <em>The Visions</em> brings me back to questions about artificial life, family, identity, and what it means to be human. Those questions are interesting to me because what matters isn't simply how a character was created, but how they live and what their relationships mean to them.</p><h3>Destiny and Dialing — The Excerpts</h3><p class="excerpt-intro">The following are the story excerpts as written and may change in the future.</p>${formatExcerpt(weeklyExcerpt)}`}
+
+  {
+ id:'who-gets-to-hold-the-power',
+ title:'Who Gets to Hold the Power?',
+ category:'The Stories We Love',
+ date:'November 2026',
+ era:'This week • The Stories We Love',
+ excerpt:'Six more issues of Tom Strong, two films, another episode of Get Jiro, and a story about revolution, loyalty, and the people who claim to speak for everyone.',
+ body:`<h3>What I've Been Watching</h3>
+<p>This week I watched <em>Ghost Soldier</em> and <em>Ebenezer</em>, and continued <em>Get Jiro</em> with another episode. I'm still following the story as it develops, and each episode gives me another piece of that world to think about.</p>
+
+<h3>What I've Been Reading</h3>
+<p>I read another six issues of Alan Moore's <em>Tom Strong</em>, continuing from where I left off last week. That brings me through another stretch of the series and gives me more time with the kind of adventurous, science-minded heroism that originally caught my attention through <em>The Terrifics</em>. That connection to Solomon Tough remains one of the reasons I'm interested in seeing where <em>Tom Strong</em> goes.</p>
+
+<h3>Power, Revolution, and the People Behind the Masks</h3>
+<p>This week's script follows Web as he continues a hunt that has lasted more than twenty years. Sekwaf Yug is someone he has fought beside as well as against, which makes their conflict more complicated than a straightforward pursuit. Web knows the people around this situation—the Bartender, Ben Storian, and the mercenary brothers Distance and Direction—but Sekwaf remains an unanswered question.</p>
+
+<p>The central disagreement is about power. Sekwaf describes himself as a revolutionary who wants to remove the hands of power entirely, arguing that no one person should hold power over another. But the way he pursues that goal creates its own contradiction. He stages a spectacle, uses violence, and declares himself the leader of Anonymous while speaking for a movement that supposedly rejects anyone holding power over others. Web's response is that symbols will always rise, and that people who claim to be revolutionaries can become another version of the thing they oppose.</p>
+
+<p>Direction's part in the scene adds a different perspective. He and Distance work for a price, but they also have a code that matters to them. Direction is willing to face death rather than abandon it, while Web changes the contract so that Direction can recover and have time with his brother. Their loyalty gives the scene a personal stake beyond the argument between Web and Sekwaf.</p>
+
+<p>I'm also interested in the history between Web and Sekwaf. They have shared enemies before, and Web acknowledges that they once had common interests. The fact that they are now on opposite sides raises the question of when a shared cause stops being shared—and whether the person claiming to lead a revolution still believes in what it was supposed to stand for.</p>
+
+<h3>Web — The Script</h3>
+<p class="excerpt-intro">This is the current script excerpt. The scene is still being developed, so it stops at the question Sekwaf asks Web.</p>
+
+${formatExcerpt(webExcerpt)}`
+},
 ];
 
 const grid=document.getElementById('post-grid'),search=document.getElementById('search'),filters=document.getElementById('filters');let activeCategory='All';
